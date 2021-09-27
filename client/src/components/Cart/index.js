@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
-import { useStoreContext } from "../../utils/GlobalState";
 import CartItem from "../CartItem";
 import Auth from "../../utils/auth";
 import "./style.css";
+import { useDispatch, useSelector } from 'react-redux';
+
 
 const Cart = () => {
-    const [state, dispatch] = useStoreContext();
-    console.log(state);
+    const dispatch = useDispatch();
+    const state = useSelector(state => state);
 
     useEffect(() => {
         async function getCart() {
